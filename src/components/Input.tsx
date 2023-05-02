@@ -1,4 +1,3 @@
-import { Interface } from 'readline';
 import '../styles/Input.css'
 
 export interface IputInterface {
