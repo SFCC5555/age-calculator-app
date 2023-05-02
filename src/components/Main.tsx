@@ -5,20 +5,23 @@ import { Output } from './Output';
 
 const Main: React.FC = () => {
 
-    const [day,setDay] = useState<string | number>('-');
-    const [month,setMonth] = useState<string | number>('-');
-    const [year,setYear] = useState<string | number>('-');
+    const [day,setDay] = useState(0);
+    const [month,setMonth] = useState(0);
+    const [year,setYear] = useState(0);
 
-    const actualDate = new Date();
+    const currentDate = new Date();
 
-    const actualDay:number = actualDate.getDate();
-    
+    const currentDay:number = currentDate.getDate();
+    const currentMonth:number = currentDate.getMonth();
+    const currentYear:number = currentDate.getFullYear();
 
 
 
     function handleChange(e:any):void {
 
-        e.target.id==='DAY'?setDay(e.target.value):e.target.id==='MONTH'?setMonth(e.target.value):setYear(e.target.value);
+        let inputValue = parseInt(e.target.value)
+
+        e.target.id==='DAY'?setDay(inputValue):e.target.id==='MONTH'?setMonth(inputValue):setYear(inputValue);
 
 
     }
@@ -34,9 +37,9 @@ const Main: React.FC = () => {
         </section>
 
         <section className='outputSection'>
-            <Output name='years' number={year}/>
-            <Output name='months' number={month}/>
-            <Output name='days' number={day}/>
+            <Output name='years' date={year} currentDate={currentYear}/>
+            <Output name='months' date={month} currentDate={currentMonth}/>
+            <Output name='days' date={day} currentDate={currentDay}/>
         </section>
 
     </section>
