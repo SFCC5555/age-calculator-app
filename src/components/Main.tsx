@@ -12,34 +12,48 @@ const Main: React.FC = () => {
     const currentDate = new Date();
 
     const currentDay:number = currentDate.getDate();
-    const currentMonth:number = currentDate.getMonth();
+    const currentMonth:number = currentDate.getMonth()+1;
     const currentYear:number = currentDate.getFullYear();
 
 
 
     function handleChange(e:any):void {
+        
+        let inputValue;
 
-        let inputValue = parseInt(e.target.value)
+        if (e.target.value==='') {
+            inputValue=0;
+        } else {
+            inputValue = parseInt(e.target.value)
+        }
+        
+        e.target.id==='DAY'?setDay(inputValue>31?31:inputValue):e.target.id==='MONTH'?setMonth(inputValue>12?12:inputValue):setYear(inputValue>currentYear?currentYear:inputValue);
 
-        e.target.id==='DAY'?setDay(inputValue):e.target.id==='MONTH'?setMonth(inputValue):setYear(inputValue);
+    }
 
+    function handleClick() {
+        setDay(0);
+        setMonth(0);
+        setYear(0);
 
     }
 
 
-
     return  <section className='mainSection'>
         <section className='inputSection'>
-            <Input name='DAY' handleChange={handleChange} />
-            <Input name='MONTH' handleChange={handleChange} />
-            <Input name='YEAR' handleChange={handleChange} />
-            <span className='icon'/>
+            <Input name='DAY' date={day}  handleChange={handleChange} />
+            <Input name='MONTH' date={month} handleChange={handleChange} />
+            <Input name='YEAR' date={year} handleChange={handleChange} currentDate={currentYear}/>
+            <span onClick={handleClick} className='icon'/>
         </section>
 
         <section className='outputSection'>
-            <Output name='years' date={year} currentDate={currentYear}/>
-            <Output name='months' date={month} currentDate={currentMonth}/>
-            <Output name='days' date={day} currentDate={currentDay}/>
+            <Output name='years' date={year} currentDate={(currentMonth<month)||(currentMonth===month&&currentDay<day)?currentYear-1:currentYear}/>
+            <Output name='months' date={month} currentDate={currentDay<day?currentMonth-1:currentMonth}/>
+            <Output name='days' date={day} currentDate={currentDay} maxDay={month===2?29
+                                                                            :month===4||month===6||month===9||month===11?30
+                                                                            :31
+                                                                            }/>
         </section>
 
     </section>
