@@ -5,9 +5,10 @@ export interface IputInterface {
     handleChange: any
     currentDate?:number
     date:number
+    maxDay?:number
 }
 
-const Input: React.FC<IputInterface> = ({name,handleChange,currentDate,date}) => {
+const Input: React.FC<IputInterface> = ({name,handleChange,currentDate,date,maxDay}) => {
     return  <div className='inputContainer'>
                 <label htmlFor={name}>{name}</label>
                 <input onChange={handleChange}
@@ -16,7 +17,7 @@ const Input: React.FC<IputInterface> = ({name,handleChange,currentDate,date}) =>
                         type='number'
                         placeholder={name==='DAY'?'DD':name==='MONTH'?'MM':'YYYY'}
                         min={1}
-                        max={name==='DAY'?31:name==='MONTH'?12:currentDate}       
+                        max={name==='DAY'?maxDay:name==='MONTH'?12:currentDate}       
                 />
             </div>
 }

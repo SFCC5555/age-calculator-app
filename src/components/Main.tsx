@@ -41,7 +41,10 @@ const Main: React.FC = () => {
 
     return  <section className='mainSection'>
         <section className='inputSection'>
-            <Input name='DAY' date={day}  handleChange={handleChange} />
+            <Input name='DAY' date={day}  handleChange={handleChange} maxDay={month===2?29
+                                                                            :month===4||month===6||month===9||month===11?30
+                                                                            :31
+                                                                            }/>
             <Input name='MONTH' date={month} handleChange={handleChange} />
             <Input name='YEAR' date={year} handleChange={handleChange} currentDate={currentYear}/>
             <span onClick={handleClick} className='icon'/>
