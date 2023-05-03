@@ -5,8 +5,10 @@
     width: 90%;
     max-width: 600px;
     background-color: var(--white);
-    padding: 40px 25px;
+    padding: 30px 25px;
+    padding-top: 10px;
     margin: 65px 0px;
+    margin-top: 10px;
     border-radius: 25px 25px 150px 25px;
 
 }
@@ -36,6 +38,7 @@
     left: 50%;
     translate: -25px;
     cursor: pointer;
+
 }
 
 .icon:hover {
@@ -43,11 +46,18 @@
 }
 
 .outputSection {
-    margin-top: 50px;
     font-size: 5rem;
     font-weight: bold;
     font-style: italic;
     align-self: flex-start;
+}
+
+.subtitle {
+    font-style: italic;
+    color:var(--purple);
+    align-self: flex-start;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 @media screen and (min-width: 700px) {

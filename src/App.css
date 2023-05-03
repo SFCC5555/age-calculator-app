@@ -1,0 +1,10 @@
+.title {
+    margin-top: 20px;
+    font-size: 4rem;
+    font-style: italic;
+    color: var(--offBlack);
+}
+
+.colorTitle {
+    color: var(--purple);
+}

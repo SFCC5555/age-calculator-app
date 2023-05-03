@@ -40,6 +40,7 @@ const Main: React.FC = () => {
 
 
     return  <section className='mainSection'>
+        <h2 className='subtitle'>YOUR DATE OF BIRTH :</h2>
         <section className='inputSection'>
             <Input name='DAY' date={day}  handleChange={handleChange} maxDay={month===2?29
                                                                             :month===4||month===6||month===9||month===11?30
@@ -49,7 +50,7 @@ const Main: React.FC = () => {
             <Input name='YEAR' date={year} handleChange={handleChange} currentDate={currentYear}/>
             <span onClick={handleClick} className='icon'/>
         </section>
-
+        <h2 className='subtitle'>YOUR AGE :</h2>                                                                 
         <section className='outputSection'>
             <Output name='years' date={year} currentDate={(currentMonth<month)||(currentMonth===month&&currentDay<day)?currentYear-1:currentYear}/>
             <Output name='months' date={month} currentDate={currentDay<day?currentMonth-1:currentMonth}/>
